@@ -64,7 +64,16 @@ public class GameOfLife {
 		int cols = Integer.parseInt(in.readLine());
 		int[][] board = new int[rows + 2][cols + 2];
 		//// Replace the following statement with your code.
-		return null;
+		String line = "";
+		for (int i = 1; i < rows; i++) {
+			line = in.readLine();
+			for (int j = 0; j < line.length(); j++) {
+				if (line.charAt(j) == 'x') {
+					board[i][j + 1] = 1;
+				}
+			}
+		}
+		return board;
 	}
 	
 	// Creates a new board from the given board, using the rules of the game.
@@ -86,7 +95,21 @@ public class GameOfLife {
 	// Uses the count(board,i,j) function to count the number of alive neighbors.
 	private static int cellValue(int[][] board, int i, int j) {
 		//// Replace the following statement with your code.
-		return 0;
+		boolean isAlive = (board[i][j] == 1);
+		int numOfNeighbors = count(board, i, j);
+		if (isAlive && numOfNeighbors < 2) {
+			board[i][j] = 0;
+		} else 
+		if (isAlive && (numOfNeighbors == 2 || numOfNeighbors == 3)) {
+			board[i][j] = 1;
+		} else 
+		if (isAlive && numOfNeighbors > 3) {
+			board[i][j] = 0;
+		} else 
+		if (!isAlive && numOfNeighbors == 3) {
+			board[i][j] = 1;
+		}
+		return board[i][j];
 	}
 	
 	// Counts and returns the number of living neighbors of the given cell
@@ -95,12 +118,45 @@ public class GameOfLife {
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 	private static int count(int[][] board, int i, int j) {
 		//// Replace the following statement with your code.
-		return 0;
+		int count = 0;
+		if (board[i - 1][j - 1] == 1) {
+			count++;
+		}
+		if (board[i - 1][j] == 1) {
+			count++;
+		}
+		if (board[i - 1][j + 1] == 1) {
+			count++;
+		}
+		if (board[i][j + 1] == 1) {
+			count++;
+		}
+		if (board[i + 1][j + 1] == 1) {
+			count++;
+		}
+		if (board[i + 1][j] == 1) {
+			count++;
+		}
+		if (board[i + 1][j - 1] == 1) {
+			count++;
+		}
+		if (board[i][j - 1] == 1) {
+			count++;
+		}
+		return count;
 	}
 	
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
     private static void print(int[][] arr) {
 		//// Write your code here.
+		int rows = arr.length;
+		int cols = arr[0].length;
+		for (int i = 1; i < rows - 1; i++) {
+			for (int j = 1; j < cols - 1; j++) {
+				System.out.printf("%4s", arr[i][j]);
+			}
+			System.out.println();
+		}
 	}
 		
     // Displays the board. Living and dead cells are represented by black and white squares, respectively.
