@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "GameOfLife",
+            "request": "launch",
+            "mainClass": "GameOfLife",
+            "projectName": "hw05-lidorStudent_2f54092",
+            "args": "line.dat"
+        },
+        {
+            "type": "java",
+            "name": "In",
+            "request": "launch",
+            "mainClass": "In",
+            "projectName": "hw05-lidorStudent_2f54092"
+        },
+        {
+            "type": "java",
+            "name": "StdDraw",
+            "request": "launch",
+            "mainClass": "StdDraw",
+            "projectName": "hw05-lidorStudent_2f54092"
+        },
+        {
+            "type": "java",
+            "name": "TesterGameOfLife",
+            "request": "launch",
+            "mainClass": "TesterGameOfLife",
+            "projectName": "hw05-lidorStudent_2f54092"
+        }
+    ]
+}
