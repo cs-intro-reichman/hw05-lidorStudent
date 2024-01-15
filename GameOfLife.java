@@ -13,7 +13,7 @@ public class GameOfLife {
 		//// (Run one test at a time).
 		//// test1(fileName);
 		//// test2(fileName);
-		//// test3(fileName, 3);
+		 test3(fileName, 3);
 		//// play(fileName);
 	}
 	
@@ -81,7 +81,15 @@ public class GameOfLife {
 	// cell in the new board. Returns the new board.
 	private static int[][] evolve(int[][] board) {
 		//// Replace the following statement with your code.
-		return null;
+		int rows = board.length;
+		int cols = board[0].length;
+		int[][] evolvedBoard = new int[rows][cols];
+		for (int i = 1; i < rows - 1; i++) {
+			for (int j = 1; j < cols - 1; j++) {
+				evolvedBoard[i][j] = cellValue(board, i, j);
+			}
+		}
+		return evolvedBoard;
 	}
 
 	// Returns the value that cell (i,j) should have in the next generation.
@@ -98,16 +106,16 @@ public class GameOfLife {
 		boolean isAlive = (board[i][j] == 1);
 		int numOfNeighbors = count(board, i, j);
 		if (isAlive && numOfNeighbors < 2) {
-			board[i][j] = 0;
+			return 0;
 		} else 
 		if (isAlive && (numOfNeighbors == 2 || numOfNeighbors == 3)) {
-			board[i][j] = 1;
+			return 1;
 		} else 
 		if (isAlive && numOfNeighbors > 3) {
-			board[i][j] = 0;
+			return 0;
 		} else 
 		if (!isAlive && numOfNeighbors == 3) {
-			board[i][j] = 1;
+			return 1;
 		}
 		return board[i][j];
 	}
